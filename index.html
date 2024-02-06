@@ -3,7 +3,233 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipeat</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>Recipeat - Home</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="search">
+          <form action="" class="search-form">
+            <input
+              type="text"
+              class="search-form__input"
+              placeholder="Search"
+            />
+            <button type="submit" class="search-form__submit"></button>
+            <svg class="search-form__close-icon">
+              <use href="/img/icons.svg#close-outline"></use>
+            </svg>
+          </form>
+        </div>
+        <div class="header__logo">Recipeat</div>
+        <div class="header__icons">
+          <div class="header__search-icon header__icon">
+            <svg>
+              <use href="/img/icons.svg#search-outline"></use>
+            </svg>
+          </div>
+          <div class="header__bookmarks-icon header__icon">
+            <svg>
+              <use href="/img/icons.svg#bookmark-outline"></use>
+            </svg>
+          </div>
+          <div class="header__upload-icon header__icon">
+            <svg>
+              <use href="/img/icons.svg#cloud-upload-outline"></use>
+            </svg>
+          </div>
+        </div>
+      </header>
+      <div class="hero">
+        <img
+          src="/img/Shvarzblat_Yocheved_Sweet_and_Sour_Meatballs.webp"
+          alt=""
+          class="hero__img"
+        />
+        <div class="hero__text">
+          <h1 class="hero__heading heading-main heading">
+            Sweet and Sour Meatballs
+          </h1>
+          <p class="hero__description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quo
+            adipisci ab quaerat voluptatem? Corrupti.
+          </p>
+          <div class="hero__stars">
+            <svg>
+              <use href="/img/icons.svg#star-sharp"></use></svg
+            ><svg>
+              <use href="/img/icons.svg#star-sharp"></use></svg
+            ><svg>
+              <use href="/img/icons.svg#star-sharp"></use>
+            </svg>
+            <svg>
+              <use href="/img/icons.svg#star-sharp"></use>
+            </svg>
+            <svg>
+              <use href="/img/icons.svg#star-half-sharp"></use>
+            </svg>
+          </div>
+
+          <div class="hero__icon">
+            <svg>
+              <use href="/img/icons.svg#arrow-forward-sharp"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="categories margin-top-lrg">
+        <h2 class="categories__heading heading-sub heading">
+          Popular Categories
+        </h2>
+        <div class="categories__container">
+          <a href="" class="categories__item"
+            ><div class="categories__img-container">
+              <img
+                src="/img/category-img-pasta.avif"
+                alt=""
+                class="categories__img"
+              />
+            </div>
+            <span class="categories__name">Pasta</span></a
+          >
+          <a href="" class="categories__item"
+            ><div class="categories__img-container">
+              <img
+                src="/img/category-img-pizza.avif"
+                alt=""
+                class="categories__img"
+              />
+            </div>
+            <span class="categories__name">Pizza</span></a
+          >
+          <a href="" class="categories__item"
+            ><div class="categories__img-container">
+              <img
+                src="/img/category-img-cheese.avif"
+                alt=""
+                class="categories__img"
+              />
+            </div>
+            <span class="categories__name">Cheese</span></a
+          >
+          <a href="" class="categories__item">
+            <div class="categories__img-container">
+              <img
+                src="/img/category-img-meat.avif"
+                alt=""
+                class="categories__img"
+              />
+            </div>
+
+            <span class="categories__name">Meat</span></a
+          >
+          <a href="" class="categories__item"
+            ><div class="categories__img-container">
+              <img
+                src="/img/category-img-chicken.avif"
+                alt=""
+                class="categories__img"
+              />
+            </div>
+            <span class="categories__name">Chicken</span></a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="subscribe-section margin-top-lrg">
+      <h1 class="heading-main-lrg heading subscribe-section__heading">
+        Bring recipes to your inbox
+      </h1>
+      <h2 class="heading-sub subscribe-section__heading-sub">
+        Enjoy weekly hand picked recipes and recommendations
+      </h2>
+      <form action="" class="subscribe-section__form">
+        <input
+          class="subscribe-section__input"
+          type="email"
+          name="email"
+          id=""
+          placeholder="Email Address"
+        />
+        <button class="subscribe-section__btn">JOIN</button>
+      </form>
+    </div>
+    <footer class="footer">
+      <div class="footer__addr">
+        <h1 class="footer__logo">Recipeat</h1>
+
+        <h2>Contact</h2>
+
+        <address>Email: ysiahijrose@gmail.com</address>
+      </div>
+
+      <ul class="footer__nav">
+        <li class="nav__item">
+          <h2 class="nav__title">Social</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">GitHub</a>
+            </li>
+
+            <li>
+              <a href="#">LinkedIn</a>
+            </li>
+
+            <li>
+              <a href="#">Email</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav__item">
+          <h2 class="nav__title">Legal</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+
+            <li>
+              <a href="#">Terms of Use</a>
+            </li>
+
+            <li>
+              <a href="#">Sitemap</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="legal">
+        <p>&copy; 2024 Yishai Rose. All rights reserved.</p>
+
+        <div class="legal__links">
+          <span>Built by Yishai Rose</span>
+        </div>
+      </div>
+    </footer>
+    <!-- <script type="module" src="/js/controller.js"></script> -->
+    <script src="/js/app.js"></script>
+  </body>
 </html>

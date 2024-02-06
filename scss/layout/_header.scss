@@ -1,0 +1,28 @@
+.header {
+  position: relative;
+  display: flex;
+  align-content: center;
+  padding: 2rem 0 1rem 0;
+  &__logo {
+    font-size: 5rem;
+    font-family: "Protest Revolution", sans-serif;
+    margin-right: auto;
+    flex-grow: 1;
+  }
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+  &__icon {
+    cursor: pointer;
+    svg {
+      height: 3rem;
+      width: 3rem;
+    }
+    :hover {
+      color: #e63946;
+    }
+  }
+}
