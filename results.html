@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Recipeat - Search Results</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="search">
+          <form action="" class="search-form">
+            <input
+              type="text"
+              class="search-form__input"
+              placeholder="Search"
+              autofocus
+            />
+            <button type="submit" class="search-form__submit"></button>
+            <svg class="search-form__close-icon">
+              <use href="/img/icons.svg#close-outline"></use>
+            </svg>
+          </form>
+        </div>
+        <div class="header__logo">
+          <img src="/img/recipeat-logo.png" />Recipeat
+        </div>
+        <div class="header__icons">
+          <div class="header__search-icon header__icon">
+            <svg class="header__link">
+              <use href="/img/icons.svg#search-outline"></use>
+            </svg>
+          </div>
+          <div class="header__bookmarks-icon header__icon bookmarks">
+            <svg class="header__link">
+              <use href="/img/icons.svg#bookmark-outline"></use>
+            </svg>
+            <div class="bookmarks__content">
+              <!-- <div class="bookmarks__error">
+                <svg>
+                  <use href="/img/icons.svg#error"></use>
+                </svg>
+                <p class="bookmarks__error-text">
+                  You have no bookmarks yet to display!
+                </p>
+              </div> -->
+              <div class="bookmarks__item">
+                <div class="bookmarks__img">
+                  <img src="/img/category-img-vegan.avif" alt="" />
+                </div>
+                <div class="bookmarks__text">
+                  <p class="bookmarks__title">A random Salad</p>
+                  <p class="bookmarks__pub">Dunno Cooking</p>
+                </div>
+                <svg class="bookmarks__delete-icon">
+                  <use href="/img/icons.svg#delete"></use>
+                </svg>
+              </div>
+              <div class="bookmarks__item">
+                <div class="bookmarks__img">
+                  <img src="/img/category-img-meat.avif" alt="" />
+                </div>
+                <div class="bookmarks__text">
+                  <p class="bookmarks__title">Some more food</p>
+                  <p class="bookmarks__pub">BBC food</p>
+                </div>
+                <svg class="bookmarks__delete-icon">
+                  <use href="/img/icons.svg#delete"></use>
+                </svg>
+              </div>
+              <div class="bookmarks__item">
+                <div class="bookmarks__img">
+                  <img src="/img/category-img-chicken.avif" alt="" />
+                </div>
+                <div class="bookmarks__text">
+                  <p class="bookmarks__title">Tasty Chicken</p>
+                  <p class="bookmarks__pub">Treif dot com</p>
+                </div>
+                <svg class="bookmarks__delete-icon">
+                  <use href="/img/icons.svg#delete"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="header__upload-icon header__icon">
+            <svg class="header__link">
+              <use href="/img/icons.svg#cloud-upload-outline"></use>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="results">
+        <h2 class="results__heading heading-sub heading">Search Results</h2>
+        <div class="search search--results-page">
+          <form action="" class="search-form">
+            <input
+              type="text"
+              class="search-form__input"
+              placeholder="Search"
+              autofocus
+            />
+            <button type="submit" class="search-form__submit"></button>
+            <svg class="search-form__close-icon">
+              <use href="/img/icons.svg#close-outline"></use>
+            </svg>
+          </form>
+        </div>
+        <div class="results-container">
+          <a href="/recipe#" class="results-container__card">
+            <div class="results-container__card-img">
+              <img
+                src="/img/Shvarzblat_Yocheved_Sweet_and_Sour_Meatballs.webp"
+                alt=""
+              />
+            </div>
+            <h3 class="results-container__card-name">
+              Sweet and Sour Meatballs
+            </h3>
+          </a>
+          <a href="/recipe#" class="results-container__card">
+            <div class="results-container__card-img">
+              <img src="/img/category-img-cheese.avif" alt="" />
+            </div>
+            <h3 class="results-container__card-name">
+              Some Delicious Cheese Dish
+            </h3>
+          </a>
+          <a href="/recipe#" class="results-container__card">
+            <div class="results-container__card-img">
+              <img src="/img/category-img-pasta.avif" alt="" />
+            </div>
+            <h3 class="results-container__card-name">
+              Random Pasta Ravioli by BBC food
+            </h3>
+          </a>
+          <a href="/recipe#" class="results-container__card">
+            <div class="results-container__card-img">
+              <img src="/img/category-img-pizza.avif" alt="" />
+            </div>
+            <h3 class="results-container__card-name">
+              Looks like regular Pizza just for testing
+            </h3>
+          </a>
+        </div>
+        <div class="pagination">
+          <a href="#">&laquo;</a>
+          <a href="#">1</a>
+          <a href="#" class="active">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">6</a>
+          <a href="#">&raquo;</a>
+        </div>
+      </div>
+    </div>
+    <script defer src="/js/app.js"></script>
+  </body>
+</html>
