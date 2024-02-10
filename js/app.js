@@ -6,7 +6,6 @@ const searchInput = document.querySelector(".search-form__input");
 
 searchOpen.addEventListener("click", () => {
   search.classList.toggle("search--visible");
-  searchInput.focus();
 });
 searchClose.addEventListener("click", () => {
   searchForm.reset();

@@ -1,6 +1,6 @@
 .subscribe-section {
   padding: 10rem;
-  background-color: #ffd8ca;
+  background-color: var(--bg-color-pink);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,9 +15,10 @@
     text-align: center;
   }
   &__form {
+    margin-top: 2rem;
     width: 40%;
     display: flex;
-    background-color: white;
+    background-color: var(--color-blue-light);
     padding: 0.2rem;
   }
   &__input {
@@ -28,20 +29,22 @@
     padding: 1rem 3rem;
     font-size: 2.2rem;
     outline: none;
-    color: #495057;
+    color: var(--color-black);
+    background-color: var(--color-blue-light);
   }
   &__btn {
     height: 6rem;
     width: 12rem;
     border: none;
-    background-color: #ff642b;
-    color: #e4f1ff;
+    background-color: var(--color-red);
+    color: var(--color-blue-light);
     font-size: 1.8rem;
     letter-spacing: 1.8px;
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
-      background-color: #f68156;
+      background-color: var(--color-red-light);
+      color: var(--color-black);
     }
   }
 }

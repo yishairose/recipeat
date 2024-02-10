@@ -11,4 +11,11 @@ html {
 body {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
+  background-color: var(--color-blue-light);
+}
+
+@media ((max-width: 992px)) {
+  html {
+    font-size: 55%;
+  }
 }

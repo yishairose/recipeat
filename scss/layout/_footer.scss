@@ -2,9 +2,9 @@
   display: flex;
   flex-flow: row wrap;
   padding: 5rem 3rem;
-  color: #2f2f2f;
-  background-color: #fff;
-  border-top: 1px solid #e5e5e5;
+  color: var(--color-black);
+  background-color: var(--color-blue-light);
+  border-top: 1px solid var(--color-grey);
 }
 
 .footer > * {
