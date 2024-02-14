@@ -12,7 +12,12 @@ body {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   background-color: var(--color-blue-light);
+  position: relative;
 }
+.no-scroll {
+  overflow: hidden;
+}
+
 a,
 a:link,
 a:visited,

@@ -28,7 +28,7 @@
       width: 3rem;
     }
     &:hover > .header__link {
-      color: #ec6670;
+      color: var(--color-red);
     }
   }
 }

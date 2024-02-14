@@ -30,6 +30,93 @@
     <title>Recipeat - Home</title>
   </head>
   <body>
+    <div class="modal upload-modal">
+      <div class="modal__content">
+        <svg class="modal__close-btn">
+          <use href="/img/icons.svg#close-outline"></use>
+        </svg>
+        <form action="" class="upload-form">
+          <div class="upload-form__column">
+            <h3 class="upload-form__heading heading">Recipe Info</h3>
+            <label for="">Title</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">URL</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">Image URL</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">Publisher</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">Prep Time</label>
+            <input value="90" required="" name="title" type="text" />
+            <label for="">Servings</label>
+            <input value="4" required="" name="title" type="text" />
+          </div>
+          <div class="upload-form__column">
+            <h3 class="upload-form__heading heading heading">Ingredients</h3>
+            <label for="">Ingredient 1</label>
+            <input
+              value="0.5,kg,Rice"
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 2</label>
+            <input
+              value="1,,Avocado"
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 3</label>
+            <input
+              value=",,salt"
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 4</label>
+            <input
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 5</label>
+            <input
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+          </div>
+          <button type="submit" class="btn btn--lrg upload-form__btn">
+            <svg class="btn__icon">
+              <use href="/img/icons.svg#cloud-upload-outline"></use>
+            </svg>
+            Upload Recipe
+          </button>
+        </form>
+        <!-- <div class="upload-error">
+          <svg>
+            <use href="/img/icons.svg#error"></use>
+          </svg>
+          <p class="upload-error__text">
+            There was an error uploading your recipe
+          </p>
+        </div> -->
+        <!-- <div class="upload-success">
+          <svg>
+            <use href="/img/icons.svg#success"></use>
+          </svg>
+          <p class="upload-error__text">
+            Your recipe was uploaded successfully
+          </p>
+        </div> -->
+      </div>
+    </div>
     <div class="container">
       <header class="header">
         <div class="search">

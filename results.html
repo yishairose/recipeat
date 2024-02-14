@@ -30,6 +30,93 @@
     <title>Recipeat - Search Results</title>
   </head>
   <body>
+    <div class="modal upload-modal">
+      <div class="modal__content">
+        <svg class="modal__close-btn">
+          <use href="/img/icons.svg#close-outline"></use>
+        </svg>
+        <form action="" class="upload-form">
+          <div class="upload-form__column">
+            <h3 class="upload-form__heading heading">Recipe Info</h3>
+            <label for="">Title</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">URL</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">Image URL</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">Publisher</label>
+            <input value="TEST" required="" name="title" type="text" />
+            <label for="">Prep Time</label>
+            <input value="90" required="" name="title" type="text" />
+            <label for="">Servings</label>
+            <input value="4" required="" name="title" type="text" />
+          </div>
+          <div class="upload-form__column">
+            <h3 class="upload-form__heading heading heading">Ingredients</h3>
+            <label for="">Ingredient 1</label>
+            <input
+              value="0.5,kg,Rice"
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 2</label>
+            <input
+              value="1,,Avocado"
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 3</label>
+            <input
+              value=",,salt"
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 4</label>
+            <input
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label for="">Ingredient 5</label>
+            <input
+              type="text"
+              required=""
+              name="ingredient-1"
+              placeholder="Format: 'Quantity,Unit,Description'"
+            />
+          </div>
+          <button type="submit" class="btn btn--lrg upload-form__btn">
+            <svg class="btn__icon">
+              <use href="/img/icons.svg#cloud-upload-outline"></use>
+            </svg>
+            Upload Recipe
+          </button>
+        </form>
+        <!-- <div class="upload-error">
+          <svg>
+            <use href="/img/icons.svg#error"></use>
+          </svg>
+          <p class="upload-error__text">
+            There was an error uploading your recipe
+          </p>
+        </div> -->
+        <!-- <div class="upload-success">
+          <svg>
+            <use href="/img/icons.svg#success"></use>
+          </svg>
+          <p class="upload-error__text">
+            Your recipe was uploaded successfully
+          </p>
+        </div> -->
+      </div>
+    </div>
     <div class="container">
       <header class="header">
         <div class="search">
@@ -132,7 +219,26 @@
           </form>
         </div>
         <div class="results-container">
-          <a href="/recipe#" class="results-container__card">
+          <!-- <span class="placeholder"> </span>
+          <span class="placeholder"> </span>
+          <span class="placeholder"> </span>
+          <span class="placeholder"> </span>
+          <span class="placeholder"> </span>
+          <span class="placeholder"> </span>
+          <span class="placeholder"> </span>
+          <span class="placeholder"> </span> -->
+          <!-- <a href="/recipe.html" class="results-container__card">
+            <div class="results-container__card-img">
+              <img
+                src="/img/Shvarzblat_Yocheved_Sweet_and_Sour_Meatballs.webp"
+                alt=""
+              />
+            </div>
+            <h3 class="results-container__card-name">
+              Sweet and Sour Meatballs
+            </h3>
+          </a> -->
+          <!-- <a href="/recipe.html" class="results-container__card">
             <div class="results-container__card-img">
               <img
                 src="/img/Shvarzblat_Yocheved_Sweet_and_Sour_Meatballs.webp"
@@ -166,9 +272,9 @@
             <h3 class="results-container__card-name">
               Looks like regular Pizza just for testing
             </h3>
-          </a>
+          </a> -->
         </div>
-        <div class="pagination">
+        <!-- <div class="pagination">
           <a href="#">&laquo;</a>
           <a href="#">1</a>
           <a href="#" class="active">2</a>
@@ -177,9 +283,64 @@
           <a href="#">5</a>
           <a href="#">6</a>
           <a href="#">&raquo;</a>
-        </div>
+        </div> -->
       </div>
     </div>
+    <footer class="footer">
+      <div class="footer__addr">
+        <h1 class="footer__logo">Recipeat</h1>
+
+        <h2>Contact</h2>
+
+        <address>Email: ysiahijrose@gmail.com</address>
+      </div>
+
+      <ul class="footer__nav">
+        <li class="nav__item">
+          <h2 class="nav__title">Social</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">GitHub</a>
+            </li>
+
+            <li>
+              <a href="#">LinkedIn</a>
+            </li>
+
+            <li>
+              <a href="#">Email</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav__item">
+          <h2 class="nav__title">Legal</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+
+            <li>
+              <a href="#">Terms of Use</a>
+            </li>
+
+            <li>
+              <a href="#">Sitemap</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="legal">
+        <p>&copy; 2024 Yishai Rose. All rights reserved.</p>
+
+        <div class="legal__links">
+          <span>Built by Yishai Rose</span>
+        </div>
+      </div>
+    </footer>
     <script defer src="/js/app.js"></script>
   </body>
 </html>
