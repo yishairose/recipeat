@@ -1,142 +1,59 @@
-import { API_URL, RESULTS_PER_PAGE, API_KEY } from "./config.js";
-import { loadJSON, sendJSON } from "./helpers.js";
-export const state = {
-  recipe: {},
+import { API_URL, RESULTS_PER_PAGE } from "./config.js";
+export let state = {
   search: {
     query: "",
     results: [],
+    currPage: 1,
     resultsPerPage: RESULTS_PER_PAGE,
-    currentPage: 1,
   },
-  bookmarks: [],
-  bookmarksOpen: false,
 };
-
-function createRecipeObject(data) {
-  const {
-    id,
-    title,
-    publisher,
-    source_url: sourceUrl,
-    servings,
-    cooking_time: cookingTime,
-    ingredients,
-    image_url: imageUrl,
-  } = data;
-  const recipe = {
-    id,
-    title,
-    publisher,
-    sourceUrl,
-    servings,
-    cookingTime,
-    ingredients,
-    imageUrl,
-    ...(data.key && { key: data.key }),
-  };
-
-  return recipe;
+export function updateLocalStorage() {
+  localStorage.setItem("state", JSON.stringify(state));
+}
+async function getJSON(url) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data;
 }
 
-export const loadRecipe = async function (id) {
+export async function getResults(searchTerm) {
   try {
-    const data = await loadJSON(`${API_URL}${id}`);
-
-    state.recipe = createRecipeObject(data.data.recipe);
-    if (
-      state.bookmarks.some((b) => {
-        return b.id === id;
-      })
-    )
-      state.recipe.bookmarked = true;
-    else state.recipe.bookmarked = false;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export async function loadResults(query) {
-  try {
-    const data = await loadJSON(`${API_URL}?search=${query}`);
-    state.search.query = query;
-    state.search.results = data.data.recipes.map((rec) => {
+    const results = await getJSON(`${API_URL}?search=${searchTerm}`);
+    if (!results.status === "sucess") throw new Error(`${results.status}`);
+    if (results.data.recipes.length < 1)
+      throw new Error(`No results found for "${state.search.query}"`);
+    state.search.results = results.data.recipes.map((res) => {
       return {
-        id: rec.id,
-        publisher: rec.publisher,
-        imageUrl: rec.image_url,
-        title: rec.title,
+        publisher: res.publisher,
+        imageUrl: res.image_url,
+        title: res.title,
+        id: res.id,
       };
     });
-    state.search.currentPage = 1;
+    state.search.query = searchTerm;
+    updateLocalStorage();
   } catch (error) {
+    state.search.results = [];
     throw error;
   }
 }
 
-export function showCurrentPage(page) {
-  state.search.currentPage = page;
-  const start = (page - 1) * state.search.resultsPerPage;
-  const end = page * state.search.resultsPerPage;
-
-  return state.search.results.slice(start, end);
+export function addQuerytoState(query) {
+  state.search.query = query;
+  updateLocalStorage();
 }
 
-export function updateServings(servings) {
-  state.recipe.ingredients.forEach((ing) => {
-    ing.quantity = (ing.quantity / state.recipe.servings) * servings;
-  });
-  state.recipe.servings = servings;
+export function getLocalStorage() {
+  state = JSON.parse(localStorage.getItem("state"));
+}
+export function controlPagination(newPage) {
+  state.search.currPage = newPage;
+  updateLocalStorage();
 }
 
-function persistBookmarks() {
-  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+export function paginateData(data) {
+  return data.splice(
+    (state.search.currPage - 1) * state.search.resultsPerPage,
+    state.search.resultsPerPage
+  );
 }
-
-function getBookmarks() {
-  const storage = localStorage.getItem("bookmarks");
-  if (storage) state.bookmarks = JSON.parse(storage);
-}
-export function addBookmark(recipe) {
-  if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
-  state.bookmarks.push(recipe);
-  persistBookmarks();
-}
-
-export function removeBookmark(id) {
-  if (id === state.recipe.id) state.recipe.bookmarked = false;
-  const index = state.bookmarks.findIndex((b) => b.id === id);
-  state.bookmarks.splice(index, 1);
-  persistBookmarks();
-}
-
-export function bookmarksTab() {
-  state.bookmarksOpen = !state.bookmarksOpen;
-}
-
-export async function uploadRecipe(newRecipe) {
-  const ingreds = Object.entries(newRecipe)
-    .filter((en) => en[0].startsWith("ingredient") && en[1] !== "")
-    .map((ing) => {
-      const [quantity, unit, description] = ing[1]
-        .replaceAll(" ", "")
-        .split(",");
-      return { quantity: quantity ? +quantity : null, unit, description };
-    });
-
-  const recipe = {
-    title: newRecipe.title,
-    source_url: newRecipe.sourceUrl,
-    image_url: newRecipe.image,
-    publisher: newRecipe.publisher,
-    cooking_time: +newRecipe.cookingTime,
-    servings: +newRecipe.servings,
-    ingreds,
-  };
-  console.log(recipe);
-
-  const data = await sendJSON(`${API_URL}?key=${API_KEY}`, recipe);
-
-  state.recipe = createRecipeObject(data.data.recipe);
-  addBookmark(data.data.recipe);
-}
-getBookmarks();

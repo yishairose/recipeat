@@ -1,7 +1,7 @@
 const searchOpen = document.querySelector(".header__search-icon");
 const searchClose = document.querySelector(".search-form__close-icon");
 const search = document.querySelector(".search");
-const searchForm = document.querySelector(".search-form");
+const searchForm = document.querySelectorAll(".search-form");
 const searchInput = document.querySelector(".search-form__input");
 const uploadBtn = document.querySelector(".header__upload-icon");
 const uploadOverlay = document.querySelector(".upload-modal");
@@ -11,7 +11,7 @@ searchOpen.addEventListener("click", () => {
   search.classList.toggle("search--visible");
 });
 searchClose.addEventListener("click", () => {
-  searchForm.reset();
+  searchForm[0].reset();
   search.classList.toggle("search--visible");
 });
 

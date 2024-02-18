@@ -10,6 +10,15 @@
   .search {
     margin-top: 3rem;
   }
+
+  &__search-query {
+    font-size: 1.8rem;
+    align-self: start;
+    margin-top: 2rem;
+  }
+  &__error {
+    color: var(--color-red);
+  }
 }
 .results-container {
   margin-top: 2.8rem;

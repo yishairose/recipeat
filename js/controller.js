@@ -6,82 +6,38 @@ import paginationView from "./view/paginationView.js";
 import bookmarksView from "./view/bookmarksView.js";
 import addRecipeView from "./view/addRecipeView.js";
 
-const recipeModal = document.querySelector(".modal--recipe");
-
-async function renderRecipe(e) {
-  //Extract ID from URl
-  const id = window.location.hash.slice(1);
-  if (!id) return;
-
-  //render spinner
-  //Load recipe from API
-  await model.loadRecipe(id);
-
-  recipeView.render(model.state.recipe);
+async function newSearch(e) {
+  const query = searchView.getSearchQuery(e);
+  if (!query) return;
+  model.addQuerytoState(query);
+  window.location.href = `/results.html`;
 }
 
-async function searchResults() {
-  try {
-    const query = searchView.getQuery();
-    if (!query) return;
-    await model.loadResults(query);
-    resultsView.render(model.showCurrentPage(model.state.search.currentPage));
-    paginationView.render(model.state.search);
-  } catch (error) {
-    console.log(error);
+async function init() {
+  // if (localStorage.getItem("state") === null) model.updateLocalStorage();
+
+  switch (window.location.pathname) {
+    case "/results.html":
+      try {
+        model.getLocalStorage();
+        resultsView.renderLoader();
+        await model.getResults(model.state.search.query);
+        resultsView.renderSearchQuery(model.state.search.query);
+        resultsView.clearContainer();
+        model.controlPagination(2);
+        resultsView.renderResults(
+          model.paginateData(model.state.search.results)
+        );
+        paginationView.renderPagination(model.state);
+        // paginationView.addHandlerPagination(model.controlPagination);
+      } catch (error) {
+        resultsView.clearContainer();
+        resultsView.renderResults(error);
+        console.error(error);
+      }
+
+      break;
   }
+  searchView.addEventHandlerSearch(newSearch);
 }
-
-function controlPagination(page) {
-  resultsView.render(model.showCurrentPage(page));
-  paginationView.render(model.state.search);
-}
-
-function controlServings(newServings) {
-  model.updateServings(newServings);
-  // recipeView.render(model.state.recipe);
-  recipeView.update(model.state.recipe);
-}
-
-function controlAddBookmark() {
-  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
-  else model.removeBookmark(model.state.recipe.id);
-  recipeView.update(model.state.recipe);
-}
-
-function controlBookmarkTab() {
-  if (!model.state.bookmarksOpen) {
-    bookmarksView.render(model.state.bookmarks);
-  } else {
-    bookmarksView.closeTab();
-  }
-
-  model.bookmarksTab();
-}
-
-async function controlUploadRecipe(newRecipe) {
-  await model.uploadRecipe(newRecipe);
-  console.log(model.state.recipe);
-  addRecipeView.closeModal();
-  recipeView.render(model.state.recipe);
-  window.history.pushState(null, "", `#${model.state.recipe.id}`);
-}
-
-function init() {
-  recipeView.addEventHandlerRender(renderRecipe);
-  recipeView.addEventHandlerClose(recipeView.closeModal.bind(recipeView));
-  addRecipeView.addEventHandlerClose(
-    addRecipeView.closeModal.bind(addRecipeView)
-  );
-  addRecipeView.addEventHandlerOpen(
-    addRecipeView.displayModal.bind(addRecipeView)
-  );
-  addRecipeView.addEventHandlerUpload(controlUploadRecipe);
-  recipeView.addEventHandlerUpdateServings(controlServings);
-  recipeView.addEventHandlerAddBookmark(controlAddBookmark);
-  bookmarksView.addEventHandlerOpenBookmarkTab(controlBookmarkTab);
-  searchView.addEventHandlerSearch(searchResults);
-  paginationView.addHandlerPagination(controlPagination);
-}
-
 init();
