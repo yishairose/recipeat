@@ -29,7 +29,7 @@ class ResultsView extends View {
     data.forEach((res) => {
       this._parentEl.insertAdjacentHTML(
         "beforeend",
-        `<a href="/recipe.html" class="results-container__card">
+        `<a href="/recipe.html#${res.id}" class="results-container__card">
       <div class="results-container__card-img">
         <img
           src="${res.imageUrl}"

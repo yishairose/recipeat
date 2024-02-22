@@ -6,6 +6,8 @@ export let state = {
     currPage: 1,
     resultsPerPage: RESULTS_PER_PAGE,
   },
+  recipe: {},
+  bookmarks: [],
 };
 export function updateLocalStorage() {
   localStorage.setItem("state", JSON.stringify(state));
@@ -38,6 +40,32 @@ export async function getResults(searchTerm) {
   }
 }
 
+export async function getRecipe(id) {
+  try {
+    const res = await getJSON(`${API_URL}/${id}`);
+    if (!res.status === "sucess") throw new Error(`${res.status}`);
+    const recipe = res.data.recipe;
+    state.recipe = {
+      publisher: recipe.publisher,
+      ingredients: recipe.ingredients,
+      sourceUrl: recipe.source_url,
+      imageUrl: recipe.image_url,
+      title: recipe.title,
+      servings: recipe.servings,
+      newServings: recipe.servings,
+      cookingTime: recipe.cooking_time,
+      id: recipe.id,
+      bookmarked: false,
+    };
+    state.recipe.bookmarked = state.bookmarks.some(
+      (bkm) => bkm.id === state.recipe.id
+    );
+    updateLocalStorage();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function addQuerytoState(query) {
   state.search.query = query;
   updateLocalStorage();
@@ -46,14 +74,36 @@ export function addQuerytoState(query) {
 export function getLocalStorage() {
   state = JSON.parse(localStorage.getItem("state"));
 }
+export function resetLocalStorage() {
+  getLocalStorage();
+  state.search.results = [];
+  state.search.query = "";
+  state.recipe = {};
+  updateLocalStorage();
+}
 export function controlPagination(newPage) {
   state.search.currPage = newPage;
   updateLocalStorage();
 }
 
 export function paginateData(data) {
-  return data.splice(
-    (state.search.currPage - 1) * state.search.resultsPerPage,
-    state.search.resultsPerPage
-  );
+  const startIndex = (state.search.currPage - 1) * state.search.resultsPerPage;
+  const endIndex = startIndex + state.search.resultsPerPage;
+  return data.slice(startIndex, endIndex);
+}
+
+export function updateServings(newServings) {
+  state.recipe.newServings = newServings;
+}
+export function updateBookmarks() {
+  state.recipe.bookmarked = !state.recipe.bookmarked;
+  if (state.recipe.bookmarked) {
+    state.bookmarks.push(state.recipe);
+  } else if (!state.recipe.bookmarked) {
+    const index = state.bookmarks.findIndex((bkm) => {
+      return state.recipe.id === bkm.id;
+    });
+    state.bookmarks.splice(index, 1);
+  }
+  updateLocalStorage();
 }

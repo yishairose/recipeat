@@ -10,7 +10,9 @@ class PaginationView extends View {
       handler(currentPage);
     });
   }
+
   renderPagination(data) {
+    this.clearContainer();
     const resPerPage = data.search.resultsPerPage;
     const noPages = data.search.results.length / resPerPage;
 

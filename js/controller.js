@@ -13,29 +13,63 @@ async function newSearch(e) {
   window.location.href = `/results.html`;
 }
 
-async function init() {
-  // if (localStorage.getItem("state") === null) model.updateLocalStorage();
+function renderPageResults(data, page = 1) {
+  resultsView.renderSearchQuery(data.query);
+  resultsView.clearContainer();
+  model.controlPagination(page);
+  resultsView.renderResults(model.paginateData(data.results));
+  paginationView.renderPagination(model.state);
+}
+function newPage(page) {
+  renderPageResults(model.state.search, page);
+}
 
+async function renderRecipe(hash) {
+  id = hash.substring(1);
+  recipeView.renderLoader();
+  await model.getRecipe(id);
+  recipeView.renderRecipe(model.state.recipe);
+}
+function controlServings(newServings) {
+  model.updateServings(newServings);
+  recipeView.renderRecipe(model.state.recipe);
+}
+
+function controlBookmarks() {
+  model.updateBookmarks();
+  recipeView.renderRecipe(model.state.recipe);
+  bookmarksView.renderBookmarks(model.state.bookmarks);
+}
+
+async function init() {
   switch (window.location.pathname) {
+    case "/":
+    case "/index.html":
+      model.resetLocalStorage();
+      bookmarksView.renderBookmarks(model.state.bookmarks);
+      break;
     case "/results.html":
       try {
         model.getLocalStorage();
+        bookmarksView.renderBookmarks(model.state.bookmarks);
         resultsView.renderLoader();
         await model.getResults(model.state.search.query);
-        resultsView.renderSearchQuery(model.state.search.query);
-        resultsView.clearContainer();
-        model.controlPagination(2);
-        resultsView.renderResults(
-          model.paginateData(model.state.search.results)
-        );
-        paginationView.renderPagination(model.state);
-        // paginationView.addHandlerPagination(model.controlPagination);
+        renderPageResults(model.state.search);
+        paginationView.addHandlerPagination(newPage);
       } catch (error) {
         resultsView.clearContainer();
         resultsView.renderResults(error);
         console.error(error);
       }
 
+      break;
+    case "/recipe.html":
+      model.getLocalStorage();
+      bookmarksView.renderBookmarks(model.state.bookmarks);
+      recipeView.addEventListenerHashChange(renderRecipe);
+      renderRecipe(window.location.hash);
+      recipeView.addEventHandlerUpdateServings(controlServings);
+      recipeView.addEventHandlerAddBookmark(controlBookmarks);
       break;
   }
   searchView.addEventHandlerSearch(newSearch);
