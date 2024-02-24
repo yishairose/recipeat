@@ -104,7 +104,7 @@ class RecipeView extends View {
   }
   addEventHandlerAddBookmark(handler) {
     this._parentEl.addEventListener("click", (e) => {
-      const bookmarkToggle = e.target.closest(".recipe__detail-icon");
+      const bookmarkToggle = e.target.closest(".recipe__bookmark-icon");
       if (!bookmarkToggle) return;
 
       handler();
