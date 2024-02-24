@@ -45,6 +45,9 @@ async function init() {
   switch (window.location.pathname) {
     case "/":
     case "/index.html":
+      if (localStorage.getItem("state") == null) {
+        model.updateLocalStorage();
+      }
       model.resetLocalStorage();
       bookmarksView.renderBookmarks(model.state.bookmarks);
       break;
