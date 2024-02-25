@@ -25,7 +25,7 @@ function newPage(page) {
 }
 
 async function renderRecipe(hash) {
-  id = hash.substring(1);
+  const id = hash.substring(1);
   recipeView.renderLoader();
   await model.getRecipe(id);
   recipeView.renderRecipe(model.state.recipe);
