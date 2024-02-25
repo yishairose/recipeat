@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist",
+    "build": "parcel build index.html results.html recipe.html --dist-dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
