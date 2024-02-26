@@ -73,6 +73,7 @@ async function init() {
       renderRecipe(window.location.hash);
       recipeView.addEventHandlerUpdateServings(controlServings);
       recipeView.addEventHandlerAddBookmark(controlBookmarks);
+      recipeView.addEventHandlerMarkIngredient();
       break;
   }
   searchView.addEventHandlerSearch(newSearch);

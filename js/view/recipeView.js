@@ -115,6 +115,13 @@ class RecipeView extends View {
       handler(window.location.hash);
     });
   }
+  addEventHandlerMarkIngredient() {
+    this._parentEl.addEventListener("click", (e) => {
+      const ingred = e.target.closest(".ingredients__item");
+      if (!ingred) return;
+      ingred.classList.toggle("ingredients__item--checked");
+    });
+  }
 }
 
 export default new RecipeView();
